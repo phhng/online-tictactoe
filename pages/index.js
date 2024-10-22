@@ -561,8 +561,8 @@ export default function Home() {
           <div className="bg-white bg-opacity-90 p-6 h-screen flex flex-col justify-between">
             {isHost !== null &&
                 (
-                    <div className="relative w-auto">
-                      <div className="w-auto flex justify-center">
+                    <div className="relative w-full">
+                      <div className="absolute inset-x-1/4 top-0 flex flex-grow justify-between items-center bg-indigo-600 p-3 rounded-lg border-4 border-black text-white shadow-xl mb-6 w-1/2 ">
 
                         <div className="flex items-center">
                           <div
@@ -679,24 +679,26 @@ export default function Home() {
                 )
             }
             {(isReady && !isLoading && myRoom !== '') && (
-                <div style={{pointerEvents: (isMyTurn ? 'auto' : 'none')}}
-                     className={'board ' + (isMyTurn ? symbol : '')} id='board'>
-                  {moves.map((cell, i) => (
-                      <div className={'cell ' + cell}
-                           onClick={() => handleCellClick(i)} data-cell
-                           key={i + cell} index={i} id={'cell' + i}></div>
-                  ))}
-                </div>
+                  <div className="absolute inset-y-1/3 m-auto left-0 right-0 flex flex-auto items-center bg-purple-300 p-8 rounded-lg border-4 border-black shadow-xl w-full max-w-fit h-96">
+                    <div style={{pointerEvents: (isMyTurn ? 'auto' : 'none')}}
+                         className={'board ' + (isMyTurn ? symbol : '')} id='board'>
+                      {moves.map((cell, i) => (
+                          <div className={'cell ' + cell}
+                               onClick={() => handleCellClick(i)} data-cell
+                               key={i + cell} index={i} id={'cell' + i}></div>
+                      ))}
+                    </div>
+                  </div>
             )}
             {(!isReady && isLoading) && (
                 <div className="justify-center flex flex-col items-center relative h-full pb-40 xs:pb-52">
-                  <div className="text-sm mb-2 opacity-80">waiting for opponent . . .</div>
+                  <div className="text-sm mb-2 opacity-80 text-black">waiting for opponent . . .</div>
                   <span className="loader"></span>
                 </div>
             )}
           </div>
-        </div>
-        </div>
+          </div>
+      </div>
     </AnimatePage>
   )
 }
