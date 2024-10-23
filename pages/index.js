@@ -621,13 +621,6 @@ export default function Home() {
                         <div className="flex-grow">
                           <h1 className="text-3xl font-bold ml-5">Tic-tac-toe Multiplayer Game</h1>
                         </div>
-                        <div id="online-players-container" className="absolute flex left-3/4 items-center">
-                          <div className="mr-2 inline w-2 h-2 bg-green-500 rounded-full relative"></div>
-                          <div className="flex -left-24 text-sm font-light">
-                            <span className="font-semibold mr-1">{onlinePlayers}</span>
-                            Online Player/s
-                        </div>
-                        </div>
                         <div className="flex">
                           {session?.user ? (
                               <button disabled={!socket}
